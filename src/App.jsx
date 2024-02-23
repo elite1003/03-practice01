@@ -5,19 +5,24 @@ import UserList from "./components/Users/UsersList.jsx";
 
 const App = () => {
   const [userList, setUserList] = useState([]);
-  const addUserHandler = (uName, uAge) => {
+  const addUserHandler = (uName, uAge, uCollege) => {
     setUserList((prevUserList) => {
       return [
         ...prevUserList,
-        { name: uName, age: uAge, id: Math.random().toString() },
+        {
+          name: uName,
+          age: uAge,
+          id: Math.random().toString(),
+          collegeName: uCollege,
+        },
       ];
     });
   };
   return (
-    <div>
+    <React.Fragment>
       <AddUser onAddUser={addUserHandler} />
       <UserList users={userList} />
-    </div>
+    </React.Fragment>
   );
 };
 
